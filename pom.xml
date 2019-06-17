@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com</groupId>
+  <artifactId>my-app</artifactId>
+  <packaging>war</packaging>
+  <version>1.0</version>
+  <name>my-app Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.5.1</version>
+          <executions>
+            <execution>
+               <id>default-deploy</id>
+               <phase>deploy</phase>
+               <goals>
+                  <goal>deploy</goal>
+               </goals>
+            </execution>
+         </executions>
+         <configuration>
+            <serverId>nexus</serverId>
+            <nexusUrl>http://40.121.34.189:8081/nexus</nexusUrl>
+            <skipStaging>true</skipStaging>
+         </configuration>
+      <!--<distributionManagement>
+                      <snapshotRepository>
+             <id>nexus-snapshots</id>
+             <url>http://168.61.37.34:8081/nexus/content/repositories/snapshots</url>
+           </snapshotRepository>
+         </distributionManagement> -->
+      </plugin>
+    </plugins>
+  </build>
+  <distributionManagement>
+ <!--   <repository>
+      <id>releases</id>
+      <url>http://40.121.34.189:8081/nexus/content/repositories/releases</url>
+    </repository>-->
+    <snapshotRepository>
+      <id>snapshots</id>
+      <url>http://40.121.34.189:8081/nexus/content/repositories/snapshots</url>
+      <layout>default</layout>
+    </snapshotRepository>
+  </distributionManagement>
+</project>
+
+
